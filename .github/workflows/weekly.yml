@@ -31,7 +31,7 @@ jobs:
           path: .
           artifact-name: sbom.cyclonedx.json
       - name: Trivy FS scan — advisory
-        uses: aquasecurity/trivy-action@0.24.0
+        uses: aquasecurity/trivy-action@0.33.1
         with:
           scan-type: 'fs'
           format: 'table'
