@@ -308,17 +308,15 @@ class GS1EPCISGraphTransformer:
     def _extract_gtin_from_epc(self, epc: str) -> str | None:
         """Extract GTIN from EPC if possible."""
         # EPC format: urn:epc:id:sgtin:CompanyPrefix.ItemReference.SerialNumber
-        try:
-            if epc.startswith("urn:epc:id:sgtin:"):
-                parts = epc.split(":")
-                if len(parts) >= 6:
-                    company_prefix = parts[4]
-                    item_reference = parts[5]
-                    # GTIN = CompanyPrefix + ItemReference (padded to 14 digits)
-                    gtin_base = f"{company_prefix}{item_reference}"
-                    return gtin_base.zfill(14)
-        except Exception:
-            pass
+        if epc.startswith("urn:epc:id:sgtin:"):
+            sgtin_part = epc.split(":")[-1]
+            parts = sgtin_part.split('.')
+            if len(parts) >= 2: # The serial number is optional for this logic
+                company_prefix = parts[0]
+                item_ref = parts[1]
+                # The GTIN is formed by the company prefix and the item reference.
+                gtin = f"{company_prefix}{item_ref}"
+                return gtin
         return None
 
 
