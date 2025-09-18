@@ -54,7 +54,7 @@ jobs:
       deployment-target: ${{ steps.deploy-target.outputs.environment }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
@@ -101,7 +101,7 @@ jobs:
         scan-tool: [bandit, pip-audit, detect-secrets, trivy]
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -182,7 +182,7 @@ jobs:
         check-type: [lint, format, type-check]
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
@@ -256,7 +256,7 @@ jobs:
             coverage-threshold: 60
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
@@ -335,7 +335,7 @@ jobs:
       package-version: ${{ steps.version.outputs.version }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -429,7 +429,7 @@ jobs:
       staging-status: ${{ steps.validation.outputs.status }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Configure AWS credentials (OIDC)
         uses: aws-actions/configure-aws-credentials@v4
@@ -549,7 +549,7 @@ jobs:
       rollback-initiated: ${{ steps.rollback.outputs.initiated }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Configure AWS credentials (OIDC)
         uses: aws-actions/configure-aws-credentials@v4
@@ -708,7 +708,7 @@ jobs:
     if: always() && (needs.deploy-staging.result == 'success' || needs.deploy-production.result == 'success')
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup monitoring tools
         run: |

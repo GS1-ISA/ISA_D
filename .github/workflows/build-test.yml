@@ -75,7 +75,7 @@ jobs:
       artifacts: ${{ steps.artifacts.outputs.list }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
       
@@ -230,7 +230,7 @@ jobs:
       coverage_reports: ${{ steps.coverage.outputs.reports }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       
       - name: Setup Node.js
         if: matrix.language == 'node' && inputs.skip_tests != true
@@ -416,7 +416,7 @@ jobs:
     if: inputs.skip_tests != true && always() && needs.build.result == 'success' && needs.test.result == 'success'
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       
       - name: Setup test environment
         run: |

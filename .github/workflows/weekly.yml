@@ -9,7 +9,7 @@ jobs:
   formal-and-sbom:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
@@ -24,7 +24,7 @@ jobs:
   sbom-and-trivy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Syft SBOM (if available)
         uses: anchore/sbom-action@v0
         with:
