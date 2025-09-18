@@ -1,0 +1,36 @@
+{
+  "$schema": "https://aka.ms/vsls-codetour.schema",
+  "title": "Welcome to ISA_D",
+  "steps": [
+    {
+      "file": "README.md",
+      "description": "Welcome to the ISA_D project! This is the root of the monorepo and the best place to start. This README should give you a high-level overview of the different components in this repository.",
+      "line": 1
+    },
+    {
+      "file": "docs/ISA_D_SYNTHESIZED_VISION.md",
+      "description": "This is the most important document for understanding the project's purpose. It is the canonical source of truth for the project's vision, principles, and roadmap. It explains that this is a 'meta-project' for building a self-developing agentic system.",
+      "line": 1
+    },
+    {
+      "file": "ISA_SuperApp/README.md",
+      "description": "This directory contains the core backend application, written in Python using FastAPI. You can see the key sub-directories listed here.",
+      "line": 1
+    },
+    {
+      "file": "frontend/README.md",
+      "description": "This directory contains the frontend web application, built with Next.js and React. This is the primary user interface for interacting with the ISA_D system.",
+      "line": 1
+    },
+    {
+      "file": "docs/agents/AGENTS.md",
+      "description": "This is a critical document. It acts as the 'system prompt' or primary instruction manual for AI agents (like me!) working on this codebase. It defines the rules, behaviors, and safety protocols we must follow.",
+      "line": 1
+    },
+    {
+      "file": "scripts/refactor_guard.py",
+      "description": "Finally, this is an example of a tool built specifically for AI agents to use. It provides a safe, structured way to perform code refactoring. It's a concrete example of the 'agent-first' philosophy of this project.",
+      "line": 1
+    }
+  ]
+}
