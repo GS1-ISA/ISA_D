@@ -4,7 +4,7 @@ dagster-postgres==0.23.14
 dagster-dbt==0.27.10
 openlineage-integration-common==1.15.0
 openlineage-dagster==1.8.0
-requests==2.31.0
+requests==2.32.5
 pandas==2.1.4
 sqlalchemy==2.0.23
 psycopg2-binary==2.9.9
