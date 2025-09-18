@@ -1,7 +1,7 @@
 dagster==1.7.14
 dagster-webserver==1.7.14
 dagster-postgres==0.23.14
-dagster-dbt==0.23.14
+dagster-dbt==0.27.10
 openlineage-integration-common==1.15.0
 openlineage-dagster==1.8.0
 requests==2.31.0
