@@ -296,6 +296,6 @@ jobs:
           fi
 
       - name: Cleanup workflow artifacts
-        uses: geekyeggo/delete-artifact@v2
+        uses: geekyeggo/delete-artifact@v5
         with:
           name: test-results-${{ github.run_id }}
