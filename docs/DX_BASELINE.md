@@ -51,4 +51,36 @@ The goal is to identify the largest sources of friction to guide the selection o
 
 *   **Summary of Findings:** The experiments show that finding high-level documentation (purpose, rationale) is a low-friction task due to the well-organized `/docs` directory. In contrast, finding a specific piece of code is a medium-friction task that relies on slow, imprecise tools like `grep`.
 *   **Biggest Friction Point:** **Code Discovery & Navigation**. The current process for finding code definitions is significantly less efficient than the process for finding documentation.
-*   **Proposed Next Action:** The highest-value next step is to run a time-boxed **Proof of Concept for a dedicated code search tool**, as outlined in the original improvement plan. Deploying a tool like Sourcegraph would directly address the biggest friction point identified in this baseline analysis.
+*   **Proposed Next Action:** The original recommendation was to run a POC for a code search tool. This analysis has been completed below.
+
+---
+
+## POC Comparison: Agent-Centric vs. Human-Centric Code Search
+
+Based on the analysis, two POCs were prepared to address the Code Discovery friction point.
+
+### Approach A: Agent-Centric (Neo4j Code Index)
+
+*   **Implementation:** A script (`scripts/poc_code_indexer.py`) was created to parse the codebase and ingest its structure into the existing Neo4j database.
+*   **Simulated Search Task:** To find the `get_development_config` function, an agent would execute the following Cypher query:
+    ```cypher
+    MATCH (f:Function {name: 'get_development_config'})-[:DEFINED_IN]->(file:File)
+    RETURN file.path, f.line
+    ```
+*   **Friction Analysis:** **Very Low (for an agent)**. This approach is ideal for AI developers. It is programmatic, structured, and returns precise data that can be directly used in an agent's workflow without screen scraping or parsing a UI. The main prerequisite is a running Neo4j instance.
+
+### Approach B: Human-Centric (Sourcegraph)
+
+*   **Implementation:** A setup guide (`docs/poc/sourcegraph_setup.md`) was created for a human developer to run Sourcegraph locally via Docker.
+*   **Simulated Search Task:** To find the `get_development_config` function, a human would:
+    1.  Open a web browser to `http://localhost:7080`.
+    2.  Type `def get_development_config` into the search bar.
+    3.  Click on the top result to navigate directly to the definition.
+*   **Friction Analysis:** **Very Low (for a human)**. This approach is ideal for human developers. The UI is intuitive, provides rich context (like blame and references), and requires no knowledge of a query language.
+
+### Conclusion & Recommendation
+
+Both approaches are excellent and solve the identified problem. They are not mutually exclusive. Given the project's core "agent-first" principle, the Neo4j-based approach is more strategically aligned.
+
+*   **Recommendation:** The **Agent-Centric Neo4j Code Index** should be fully implemented and maintained as a core piece of the project's infrastructure. Its data should be refreshed in a nightly CI job. The `poc_code_indexer.py` script should be productized.
+*   **Secondary Recommendation:** The `sourcegraph_setup.md` document should be kept as a valuable resource for human developers who prefer a UI-based tool for local development.

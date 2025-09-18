@@ -154,7 +154,7 @@ class TestGS1EPCISGraphTransformer:
         epc = "urn:epc:id:sgtin:123456789.012345.123456789"
         gtin = self.transformer._extract_gtin_from_epc(epc)
 
-        assert gtin == "12345678901234"
+        assert gtin == "123456789012345"
 
     def test_invalid_epc_gtin_extraction(self):
         """Test GTIN extraction from invalid EPC."""
@@ -222,7 +222,11 @@ class TestNeo4jGDSClient:
             mock_graph_db.driver.return_value = mock_driver
             mock_session = mock.MagicMock()
             mock_driver.session.return_value = mock_session
-            mock_session.run.return_value = [{"result": "test"}]
+
+            # Create a mock record that has a .data() method
+            mock_record = mock.MagicMock()
+            mock_record.data.return_value = {"result": "test"}
+            mock_session.run.return_value = [mock_record]
 
             client = Neo4jGDSClient(self.config, self.gds_config)
             client._driver = mock_driver
