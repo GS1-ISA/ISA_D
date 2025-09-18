@@ -101,7 +101,7 @@ jobs:
     
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       
       - name: Download deployment artifacts
         uses: actions/download-artifact@v4
@@ -201,7 +201,7 @@ jobs:
     
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       
       - name: Download deployment artifacts
         uses: actions/download-artifact@v4
@@ -335,7 +335,7 @@ jobs:
     
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       
       - name: Execute rollback
         id: rollback

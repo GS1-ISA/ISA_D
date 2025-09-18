@@ -49,7 +49,7 @@ jobs:
       staging_version: ${{ steps.staging_deployment.outputs.version }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       
       - name: Setup deployment tools
         run: |
@@ -206,7 +206,7 @@ jobs:
       deployment_version: ${{ steps.production_deployment.outputs.version }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       
       - name: Setup production deployment tools
         run: |
