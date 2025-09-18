@@ -381,7 +381,7 @@ jobs:
           python-version: ${{ matrix.version }}
       
       - name: Setup ${{ matrix.language }}
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         if: matrix.language == 'java'
         with:
           java-version: ${{ matrix.version }}
